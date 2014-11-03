@@ -1,2 +1,19 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<h1>List of all your todo's</h1>
+
+<div class="list-group">
+
+	<% @items.each do |item| %>
+	
+	<div class="list-group-item">
+		<div class="row-action-primary checkbox">
+			<label><input type="checkbox"></label>
+		</div>
+		<div class="row-content">
+			<h4 class="list-group-item-heading"><%= item.title %></h4>
+			<p class="list-group-item-text"><%= item.content %></p>
+		</div>
+	</div>
+	<div class="list-group-separator"></div>
+
+	<% end %>
+</div>
