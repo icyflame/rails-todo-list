@@ -10,18 +10,28 @@
 
 	<% if user_signed_in? %>
 
-	<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+	<%= link_to "Home", root_path, :class => "btn btn-primary" %>
+
+	<%= link_to "Sign out", destroy_user_session_path, :method => :delete, :class => "btn btn-danger" %>
+
+	<%= link_to "Add new todo", new_item_path, :class => "btn btn-success" %>
 
 	<% else %>
 
-	<%= link_to "Sign in", new_user_session_path%>	
+	<%= link_to "Sign in", new_user_session_path, :class => "btn btn-info" %>
 
 	<% end %>
 
-	<span class="notice"><%= notice %></span>
-	<span class="alert"><%= alert %></span>
+	<!-- <span class="notice"><%= notice %></span> -->
+	<!-- <span class="alert"><%= alert %></span> -->
 
 	<%= yield %>
+
+	<script>
+	$(document).ready(function() {
+		$.material.init();
+	});
+	</script>
 
 </body>
 </html>
