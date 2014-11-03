@@ -1,9 +1,11 @@
+<% if user_signed_in? %>
+
 <h1>List of all your todo's</h1>
 
 <div class="list-group">
 
 	<% @items.each do |item| %>
-	
+
 	<div class="list-group-item">
 		<div class="row-action-primary checkbox">
 			<label><input type="checkbox"></label>
@@ -14,6 +16,20 @@
 		</div>
 	</div>
 	<div class="list-group-separator"></div>
+
+	<% end %>
+
+	<% else %>
+
+	<br/>
+
+	<div class="container-fluid" style="text-align: center; ">
+
+		<h2> The simplest todo app on the web! Get an account now! </h2>
+
+		<%= link_to "Register!", new_user_registration_path, :class => "btn btn-success btn-lg" %>
+
+	</div>
 
 	<% end %>
 </div>
