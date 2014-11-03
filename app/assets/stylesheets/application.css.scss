@@ -12,10 +12,12 @@
  *
  * require_tree .
  *= require_self
+ *= require ripples.min
+ *= require material.min
  */
 
 @import "bootstrap-sprockets";
-@import "bootstrap"; 
+@import "bootstrap";
 
 html, body{
 	margin-left: 20px;
