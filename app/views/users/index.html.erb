@@ -30,6 +30,8 @@
 
 		<h2> The simplest todo app on the web! Get an account now! </h2>
 
+		<h3> <%= User.all.count %> people are using this service! </h3>
+
 		<%= link_to "Register!", new_user_registration_path, :class => "btn btn-success btn-lg" %>
 
 	</div>
