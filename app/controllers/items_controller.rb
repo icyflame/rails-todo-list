@@ -13,6 +13,16 @@ class ItemsController < ApplicationController
 		end
 	end
 
+	def update
+
+		@item = Item.find(params[:id])
+
+		@new = !@item.done
+
+		Item.update(params[:id], :done => @new)
+
+	end
+
 	def create
 		@user = User.find(params[:user_id])
 		@item = @user.items.create(item_params)
