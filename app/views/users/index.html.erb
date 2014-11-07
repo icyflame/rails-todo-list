@@ -8,14 +8,31 @@
 
 	<div class="list-group-item">
 		<div class="row-action-primary checkbox">
-			<label><input type="checkbox"></label>
+			<% if item.done %>
+			<label><input type="checkbox" data-holder="<%= item_path(item) %>" checked></label>
+			<% else %>
+			<label><input type="checkbox" data-holder="<%= item_path(item) %>"></label>
+			<% end %>
+			<% link_to "mark as done", item_path(item), method: :put %>
+
 		</div>
 		<div class="row-content">
 			<h4 class="list-group-item-heading">
+				<% if item.done %>
+				<strike><%= item.title %></strike>
+				<% else %>
 				<%= item.title %>
+				<% end %>			
+
 				<span style="float: right">Created at <%= item.created_at %></span>
 			</h4>
-			<p class="list-group-item-text"><%= item.content %></p>
+			<p class="list-group-item-text">
+				<% if item.done %>
+				<strike><%= item.content %></strike>
+				<% else %>
+				<%= item.content %>
+				<% end %>			
+			</p>
 		</div>
 	</div>
 	<div class="list-group-separator"></div>
@@ -38,3 +55,21 @@
 
 	<% end %>
 </div>
+
+<script>
+
+$(document).ready(function(){
+	$("input").on("click", function(){
+		// alert("You clicked!");
+
+		$.ajax({
+			url: $(this).attr("data-holder"),
+			type: 'PUT',
+			success: function(result) {
+				alert("Done!");
+			}
+		});
+	});
+});
+
+</script>
